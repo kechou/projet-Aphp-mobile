@@ -1,50 +1,27 @@
-# Welcome to your Expo app 👋
+# Aphp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> 🩺 Application mobile de tableau de bord pour les infirmiers, développée en React Native (Expo).
 
-## Get started
+---
 
-1. Install dependencies
+## 📱 Présentation
 
-   ```bash
-   npm install
-   ```
+**Aphp** est une application mobile conçue pour simplifier le quotidien des professionnels de santé. Elle regroupera plusieurs modules pratiques au sein d’une seule interface qui simplifiera la completion de documentation lié aux patients.
 
-2. Start the app
+Le projet est encore en phase de conception — les modules ne seront pour l'instant présentés uniquement sous forme de maquettes visuelles.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🚀 Technologies
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+- TypeScript
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
-
-When you're ready, run:
+## 🛠️ Lancer le projet en local
 
 ```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+npm install
+npx expo start
