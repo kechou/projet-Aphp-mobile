@@ -25,3 +25,4 @@ Le projet est encore en phase de conception — les modules ne seront pour l'ins
 ```bash
 npm install
 npx expo start
+Ensuite, scannez le QR code avec Expo Go (Android/iOS) ou utilisez un émulateur.
