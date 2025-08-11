@@ -4,29 +4,55 @@ import Footer from './Footer';
 import Header from './Header';
 
 type Props = {
-  children: ReactNode;
-};
+    children: ReactNode;
+    isGridView: boolean;
+    onToggleView: () => void;
+}
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children, isGridView, onToggleView }: Props) {
   return (
     <View style={styles.container}>
-      <Header />
+      <View style={styles.header}>
+        <Header />
+      </View>
+
       <View style={styles.body}>
         {children}
       </View>
-      <Footer />
+
+      <View style={styles.footer}>
+        <Footer isGridView={isGridView} onToggleView={onToggleView}/>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1, // occupe tout l'écran
+  container:
+  {
+    flex: 1,
     backgroundColor: '#fff',
   },
+  header:
+  {
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
   body: {
-    flex: 1, // le contenu s'étend entre le header et le footer
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
+  },
+  footer: {
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    borderTopWidth: 1,
+    borderTopColor: '#ccc',
   },
 });
