@@ -1,39 +1,55 @@
-import AddModuleButton from '@/components/AddModuleButton';
 import Layout from '@/components/Layout';
 import ModuleCard from '@/components/ModuleCard';
 import modules from '@/components/modules';
-import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
 
-console.log('Index ---> AddModuleButton is', AddModuleButton);   // <= doit afficher [Function AddModuleButton]
+import { useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 export default function HomeScreen() {
   const [isGridView, setIsGridView] = useState(false);
 
   return (
-    <Layout isGridView={isGridView} onToggleView={() => setIsGridView(!isGridView)}>
-      <View style={isGridView ? styles.grid : styles.list}>
-        {modules.map((mod) => (
-          <ModuleCard key={mod.id} title={mod.title} icon={mod.icon} />
-        ))}
+    <Layout
+      isGridView={isGridView}
+      onToggleView={() => setIsGridView((isGrid) => !isGrid)}
+    >
+      <FlatList
+        data={modules}
+        keyExtractor={(item) => String(item.id)}
+        key={isGridView ? 'grid' : 'list'}
+        numColumns={isGridView ? 2 : 1}
 
+        renderItem={({ item }) => (
+          <View style={isGridView ? styles.gridItem : styles.listItem}>
+            <ModuleCard title={item.title} icon={item.icon} />
+          </View>
+        )}
 
-        <AddModuleButton onPress={() => console.log('Ajout')} />
-      </View>
+        contentContainerStyle={styles.content}
+        columnWrapperStyle={isGridView ? styles.gridRow : undefined}
+        //ListFooterComponent={
+          //<AddModuleButton onPress={() => console.log('Ajouter un module')} />
+        //}
+      />
     </Layout>
   );
 }
 
 const styles = StyleSheet.create({
-  list: {
-    flexDirection: 'column',
-    gap: 12,
+    content: {
+    paddingBottom: 16,
+    rowGap: 12,
   },
-  grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
+  listItem: {
+    width: '100%',
+  },
+  gridRow: {
+    columnGap: 12,
     justifyContent: 'space-between',
+  },
+  gridItem: {
+    width: '48%',
+    marginBottom: 12,
   },
 });
 

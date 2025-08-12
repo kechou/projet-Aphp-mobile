@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -10,8 +11,10 @@ type Props = {
 }
 
 export default function Layout({ children, isGridView, onToggleView }: Props) {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={styles.container}>
+<View style={styles.container}>
       <View style={styles.header}>
         <Header />
       </View>
@@ -20,9 +23,9 @@ export default function Layout({ children, isGridView, onToggleView }: Props) {
         {children}
       </View>
 
-      <View style={styles.footer}>
-        <Footer isGridView={isGridView} onToggleView={onToggleView}/>
-      </View>
+      <SafeAreaView edges={['bottom']} style={styles.footer}>
+        <Footer isGridView={isGridView} onToggleView={onToggleView} />
+      </SafeAreaView>
     </View>
   );
 }
@@ -48,7 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   footer: {
-    height: 60,
+    minHeight: 60,
+    paddingVertical: 12,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
