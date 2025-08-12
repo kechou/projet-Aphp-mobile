@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -11,7 +11,6 @@ type Props = {
 }
 
 export default function Layout({ children, isGridView, onToggleView }: Props) {
-  const insets = useSafeAreaInsets();
 
   return (
 <View style={styles.container}>
