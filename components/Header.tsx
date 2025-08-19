@@ -1,13 +1,30 @@
-import { router } from 'expo-router';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { router, useNavigation } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function Header() {
+type Props = {
+  title?: string;
+};
+
+export default function Header({ title = "Bienvenue sur l'Aphp" }: Props) {
+  const navigation = useNavigation<StackNavigationProp<any>>();
+
+  const canGoBack = navigation.canGoBack();
+
   return (
     <View style={style.container}>
-      <Text style={style.title}>Bienvenue sur l&apos;Aphp</Text>
-      <TouchableOpacity onPress={() => router.push('/preferences')}>
-        <Text style={style.settings}>⚙️</Text>
-      </TouchableOpacity>
+      {canGoBack ?
+      (<TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={style.back}>←</Text>
+        </TouchableOpacity>) :
+      (<View style={style.spacer} />)}
+
+      <Text style={style.title}>{title}</Text>
+      {!canGoBack &&  (
+        <TouchableOpacity onPress={() => router.push('/preferences')}>
+          <Text style={style.settings}>⚙️</Text>
+        </TouchableOpacity>)}
+
     </View>
   );
 }
@@ -30,6 +47,14 @@ const style = StyleSheet.create({
   },
   settings: {
     fontSize: 20,
+    padding: 8,
+  },
+  spacer: {
+    width: 32,
+  },
+  back: {
+    fontSize: 24,
+    color: 'white',
     padding: 8,
   }
 });

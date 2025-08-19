@@ -1,12 +1,6 @@
-export type ModuleItem = {
-  id: string;
-  title: string;
-  icon: string;
-  type: 'module';
-};
+import { HomeItem, ModuleItem } from '@/types/Modules';
 
 export type AddItem = { id: 'add'; type: 'add' };
-export type HomeItem = ModuleItem | AddItem;
 
 // On met directement type: 'module' dans chaque objet
 export const modules: ModuleItem[] = [

@@ -1,13 +1,18 @@
 
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
-type Props = { onPress: () => void };
+export default function AddModuleButton() {
+  const router = useRouter(); 
 
-export default function AddModuleButton({ onPress }: Props) {
+const handlePress = () => {
+    router.push('/add-modules');
+  };
+
   return (
     <Pressable
-      onPress={onPress}
+      onPress={handlePress}
       android_ripple={{ color: 'rgba(255,255,255,0.2)' }}
       style={({ pressed }) => [
         styles.card,

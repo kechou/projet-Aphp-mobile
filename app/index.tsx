@@ -27,14 +27,14 @@ export default function HomeScreen() {
         if (item.type === 'add') {
           return (
             <View style={wrapperStyle}>
-              <AddModuleButton onPress={() => console.log('Ajouter un module')}/>
+              <AddModuleButton />
             </View>
           );
         }
 
         return (
           <View style={wrapperStyle}>
-            <ModuleCard title={item.title} icon={item.icon} />
+            <ModuleCard key={item.id} title={item.title} icon={item.icon} />
           </View>
         );
       }}

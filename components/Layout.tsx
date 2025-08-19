@@ -6,16 +6,17 @@ import Header from './Header';
 
 type Props = {
     children: ReactNode;
-    isGridView: boolean;
-    onToggleView: () => void;
+    isGridView?: boolean;
+    headerTitle?: string;
+    onToggleView?: () => void;
 }
 
-export default function Layout({ children, isGridView, onToggleView }: Props) {
+export default function Layout({ children, isGridView, headerTitle, onToggleView }: Props) {
 
   return (
 <View style={styles.container}>
       <View style={styles.header}>
-        <Header />
+        <Header title={headerTitle} />
       </View>
 
       <View style={styles.body}>
@@ -23,7 +24,9 @@ export default function Layout({ children, isGridView, onToggleView }: Props) {
       </View>
 
       <SafeAreaView edges={['bottom']} style={styles.footer}>
+        {onToggleView && typeof isGridView !== 'undefined' && (
         <Footer isGridView={isGridView} onToggleView={onToggleView} />
+        )}
       </SafeAreaView>
     </View>
   );
